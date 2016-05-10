@@ -1,0 +1,39 @@
+<div class="w-section content-section gray">
+  <div class="content-wrapper white contact">
+    <div class="contact-form-box">
+      <div class="contact-form-title-box">
+            <div class="title medium dark">Hey there, <%= @user.first_name %>! Below are your account details:</div>
+          </div>
+          <div class="w-form form-wrapper">
+            <div class="w-clearfix input-box">
+              <div class="input-text your-message">First Name: <%= @user.first_name %></div>
+            </div>
+              <br>
+              <div class="w-clearfix input-box">
+                <div class="input-text your-message">Last Name: <%= @user.last_name %></div>
+              </div>
+              <br>
+            <div class="w-clearfix input-box">
+              <div class="input-text your-message">Email Address: <%= @user.email %></div>
+            </div>
+              <br>
+            <div class="w-clearfix input-box">
+              <div class="input-text your-message">Phone Number: <%= User.format_phone_number(@user.phone) %></div>
+            </div>
+              <br>
+            <div class="w-clearfix input-box">
+              <div class="title medium dark">Style Prefences: </div>
+              <div class="input-text your-message"></div>
+            </div>
+            <br>
+            <div class="w-clearfix input-box">
+              <div class="input-text your-message"><%= @user.created_at.strftime("You joined Bogeybox on %m/%d/%Y") %></div>
+            </div>
+            <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

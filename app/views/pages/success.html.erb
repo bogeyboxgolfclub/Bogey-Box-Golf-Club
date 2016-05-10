@@ -1,0 +1,12 @@
+<div class="w-section content-section gray">
+  <div class="content-wrapper white contact">
+    <div class="contact-form-box">
+      <div class="contact-form-title-box">
+            <div class="title medium dark">Weclome to the club, <%= @user.first_name %></div>
+          </div>
+          <div class="w-form form-wrapper">
+            <%= User.format_phone_number(number = @user.phone_number) %>
+          </div>
+        </div>
+      </div>
+    </div>

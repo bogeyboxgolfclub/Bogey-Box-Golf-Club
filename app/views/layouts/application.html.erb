@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Bogeyboxgolfclub</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <title>Bogeybox Golf Club | <%= @title %></title>
+  <meta property="og:title" content="Bogeybox Golf Club">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="<%= image_path('favicon-32x32.png') %>">
+  <link rel="apple-touch-icon" href="<%= image_path('bb-webclip.jpg') %>">
+  <%= stylesheet_link_tag    'application', 'normalize', 'webflow', 'bogey-box-v2.webflow' %>
+  <%= javascript_include_tag 'application', 'modernizr', 'webflow.js' %>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+  <%= render 'layouts/fonts' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
-
+<body data-ix="show-up-body" class="body">
+  <% if user_signed_in? %>
+  <%= render 'layouts/header_user' %>
+  <%= yield %>
+<% else %>
+  <%= render 'layouts/header_visitor' %>
+  <%= yield %>
+<% end %>
+  <%= render 'layouts/footer' unless current_page?(sign_up_url)%>
 </body>
 </html>

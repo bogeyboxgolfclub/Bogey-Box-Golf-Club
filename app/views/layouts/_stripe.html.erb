@@ -1,0 +1,9 @@
+<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="<%= ENV['stripe_publishable_key'] %>"
+        data-description="Bogeybox Golf Club Membership Dues"
+        data-amount="100"
+        data-currency="usd"
+        data-email="<%= params['email'] %>"
+        data-locale="auto"
+        data-allow-remember-me="false">
+</script>

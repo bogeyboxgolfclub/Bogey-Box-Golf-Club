@@ -1,0 +1,48 @@
+
+<!-- Header Section -->
+  <div class="navbar">
+    <div data-ix="initial-appearance-full-page-menu" class="w-section full-page-menu">
+      <div class="content-wrapper narrow">
+        <div data-ix="initial-appearance-menu-items" class="menu-item-1">
+          <a href="/" data-ix="actions-for-menu-items" class="w-inline-block menu-item-box">
+            <div data-ix="initial-appearance-strikethrough-big" class="strikethrough-big"></div>
+            <div class="title show-title-above-strikethrough"><%= link_to('Log Out', destroy_user_session_path, :method => :get, :style => 'text-decoration: none;') %> </div>
+          </a>
+          <br>
+        </div>
+        <div data-ix="initial-appearance-menu-items" class="menu-item-2">
+          <a href="/faq" data-ix="actions-for-menu-items" class="w-inline-block menu-item-box">
+            <div data-ix="initial-appearance-strikethrough-big" class="strikethrough-big"></div>
+            <div class="title show-title-above-strikethrough">FAQ</div>
+          </a>
+        </div>
+        <div data-ix="initial-appearance-menu-items" class="menu-item-5">
+          <a href="/contact" data-ix="actions-for-menu-items" class="w-inline-block menu-item-box">
+            <div data-ix="initial-appearance-strikethrough-big" class="strikethrough-big"></div>
+            <div class="title show-title-above-strikethrough">contact</div>
+          </a>
+        </div>
+        <div data-ix="initial-appearance-social-icons-box" class="w-clearfix social-icons-box-medium">
+          <a href="http://fb.com/bogeyboxgolf/" target="_blank" class="w-inline-block social-icon medium"><img width="190" src="<%= image_path('facebook-fill.png') %>" class="facebook-fill">
+          </a>
+          <a href="https://twitter.com/bogeyboxgolf/" target="_blank" class="w-inline-block social-icon twitter medium"><img width="190" src="<%= image_path('Twitter-fill_1.png') %>" class="twitter-fill">
+          </a>
+          <a href="https://www.linkedin.com/company/bogeybox-golf-club" target="_blank" class="w-inline-block social-icon linkedin medium"><img width="190" src="<%= image_path('Linkedin-fill.png') %>" class="linkedin-fill">
+          </a>
+          <a href="https://www.instagram.com/bogeyboxgolfclub/" target="_blank" class="w-inline-block social-icon instagram medium"><img width="190" src="<%= image_path('instagram-fill.png') %>" class="instagram-fill">
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="w-container menu-wrapper">
+      <a href="/" data-ix="fade-out-body-on-click" class="w-nav-brand brand">
+        <div class="logo-text show-title-above-strikethrough"><img width="150" src="<%= image_path('550f5bc5b6fa30383c355d5b_bb_header.png') %>" class="logo-image">
+        </div>
+      </a>
+      <a href="#" data-ix="actions-for-burger-menu" class="w-inline-block burger-menu">
+        <div class="burger-line-1"></div>
+        <div class="burger-line-2"></div>
+        <div class="burger-line-3"></div>
+      </a>
+    </div>
+  </div>
