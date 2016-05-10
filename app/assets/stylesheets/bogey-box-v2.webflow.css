@@ -589,7 +589,6 @@ figcaption {
   right: 0px;
   bottom: 0px;
   height: auto;
-  background-image: url('../assets/547a04ed44cf3c333197282c_IMG_4449.JPG');
   background-position: 0px 0px, 0px 0px;
   background-size: cover, cover;
   background-attachment: fixed, scroll;
@@ -1324,7 +1323,6 @@ figcaption {
   position: relative;
   padding-top: 25%;
   padding-bottom: 23%;
-  background-image: url('../assets/547a04ed44cf3c333197282c_IMG_4449.JPG');
   background-position: 0px 0px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1380,7 +1378,6 @@ figcaption {
   height: 40px;
   border-radius: 50%;
   background-color: #fff;
-  background-image: url('../assets/Arrow.png');
   background-position: 50% 50%;
   background-size: 19px;
   background-repeat: no-repeat;
