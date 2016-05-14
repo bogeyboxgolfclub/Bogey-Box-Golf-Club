@@ -13,7 +13,7 @@
   <%= render 'layouts/fonts' %>
   <%= csrf_meta_tags %>
 </head>
-<body data-ix="show-up-body" class="body">
+<body data-ix="show-up-body" class="body" data-no-turbolink=true>
   <% if user_signed_in? %>
   <%= render 'layouts/header_user' %>
   <%= yield %>
