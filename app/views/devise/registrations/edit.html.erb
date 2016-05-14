@@ -1,39 +1,42 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="w-section content-section gray">
+  <div class="content-wrapper white contact">
+    <div class="contact-form-box">
+      <div class="contact-form-title-box">
+            <div class="title medium dark">Complete your membership profile below, <%= params['first_name'] %>:</div>
+          </div>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:name => "email-form", :class => "form", :id => "email-form"}) do |f| %>
+              <%= devise_error_messages! %>
+              <br>
+                <%= f.hidden_field :email, autofocus: true, :value => params['email'], :class => 'w-input text-field', :style => 'text-align:center;' %>
+                <%= f.hidden_field :password, autocomplete: "off", :value => "#{params['email']}_#{params['email'].size}16",  :class => 'w-input text-field', :style => 'text-align:center;' %>
+                <%= f.hidden_field :password_confirmation, autocomplete: "off", :value => "#{params['email']}_#{params['email'].size}16", :class => 'w-input text-field', :style => 'text-align:center;' %>
+              <script src="http://checkout.stripe.com/checkout.js" class="stripe-button"
+                      data-key="<%= ENV['stripe_publishable_key'] %>"
+                      data-description="Bogeybox Golf Club Membership Dues"
+                      data-email="<%= params['email'] %>"
+                      data-shipping-address=true
+                      data-billing-address=true
+                      data-amount="100"
+                      data-locale="auto"
+                      data-allowRememberMe=false
+                      data-image="<%= image_path('bb-webclip.jpg') %>"
+                      style="margin-bottom:10%;">Join The Club
+              </script>
+              <% end %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+<script>
+$(document).ready(function () {
+   $(".stripe-button-el").trigger('click');
+});
+</script>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

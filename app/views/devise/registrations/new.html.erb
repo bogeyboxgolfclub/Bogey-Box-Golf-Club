@@ -4,35 +4,24 @@
       <div class="contact-form-title-box">
             <div class="title medium dark">Complete your membership profile below, <%= params['first_name'] %>:</div>
           </div>
-          <div class="w-form form-wrapper">
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:name => "email-form", :class => "form", :id => "email-form"}) do |f| %>
               <%= devise_error_messages! %>
-              <%= f.hidden_field :first_name, :value => params["first_name"]%>
-              <%= f.hidden_field :last_name, :value => params["last_name"]%>
-              <%= f.hidden_field :phone, :value => params["phone_number"]%>
-              <%= f.hidden_field :zip_code, :value => params["zip_code"]%>
-              <br>
-              <div class="w-clearfix input-box">
-                <div class="input-text your-message">Email Address:</div>
-                <%= f.email_field :email, autofocus: true, :value => params['email'], :class => 'w-input text-field', :style => 'text-align:center;' %>
-              </div>
-              <br>
-              <div class="w-clearfix input-box">
-                <div class="input-text your-message">Password:</div>
-                <%= f.password_field :password, autocomplete: "off", :class => 'w-input text-field', :style => 'text-align:center;' %>
-              </div>
-              <div class="w-clearfix input-box">
-                <div class="input-text your-message">Password Confirmation:</div>
-                <%= f.password_field :password_confirmation, autocomplete: "off", :class => 'w-input text-field', :style => 'text-align:center;' %>
-              </div>
-              <br>
-              <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+
+                <% encryption = User.generate_encrypted_password(6) %>
+                <%= f.hidden_field :email, :value => params['email'] %>
+                <%= f.hidden_field :first_name, :value => params['first_name'] %>
+                <%= f.hidden_field :last_name, :value => params['last_name'] %>
+                <%= f.hidden_field :zip_code, :value => params['zip_code'] %>
+                <%= f.hidden_field :phone, :value => params['phone'] %>
+                <%= f.hidden_field :password, autocomplete: "off", :value => encryption %>
+                <%= f.hidden_field :password_confirmation, autocomplete: "off", :value => encryption %>
+
+              <script src="http://checkout.stripe.com/checkout.js" class="stripe-button"
                       data-key="<%= ENV['stripe_publishable_key'] %>"
                       data-description="Bogeybox Golf Club Membership Dues"
                       data-email="<%= params['email'] %>"
                       data-shipping-address=true
                       data-billing-address=true
-                      data-addressNameInput="<%= "#{params["first_name"]} #{params["last_name"]}" %>"
                       data-amount="100"
                       data-locale="auto"
                       data-allowRememberMe=false
@@ -40,13 +29,16 @@
                       style="margin-bottom:10%;">Join The Club
               </script>
               <% end %>
-            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-
+<script>
+$(document).ready(function () {
+   $(".stripe-button-el").trigger('click');
+});
+</script>
 
 </div>
