@@ -6,7 +6,6 @@
           </div>
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:name => "email-form", :class => "form", :id => "email-form"}) do |f| %>
               <%= devise_error_messages! %>
-
                 <% encryption = User.generate_encrypted_password(6) %>
                 <%= f.hidden_field :email, :value => params['email'] %>
                 <%= f.hidden_field :first_name, :value => params['first_name'] %>
@@ -16,7 +15,7 @@
                 <%= f.hidden_field :password, autocomplete: "off", :value => encryption %>
                 <%= f.hidden_field :password_confirmation, autocomplete: "off", :value => encryption %>
 
-              <script src="http://checkout.stripe.com/checkout.js" class="stripe-button"
+              <script src="<%= ENV['stripe_checkout_url'] %>" class="stripe-button"
                       data-key="<%= ENV['stripe_publishable_key'] %>"
                       data-description="Bogeybox Golf Club Membership Dues"
                       data-email="<%= params['email'] %>"
