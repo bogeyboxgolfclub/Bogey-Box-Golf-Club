@@ -11,10 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513214808) do
+ActiveRecord::Schema.define(version: 20160516232942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "gift_recipients", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "shipping_address_line_1"
+    t.string   "shipping_address_zip"
+    t.string   "shipping_address_line_state"
+    t.string   "shipping_address_city"
+    t.string   "shipping_address_country"
+    t.string   "shipping_address_country_code", default: "US"
+    t.integer  "gifter_id"
+    t.integer  "preference_id"
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+  end
+
+  create_table "gifters", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "best_contact_method"
+    t.string   "best_time_of_day"
+    t.string   "product_option"
+    t.string   "typeform_submission_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "preferences", force: :cascade do |t|
     t.string   "style_on_course"

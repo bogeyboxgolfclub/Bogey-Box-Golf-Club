@@ -16,6 +16,14 @@ class PagesController < ApplicationController
     @title = 'Gift A Bogeybox'
   end
 
+  def giftbox
+    @title = 'Gift Bogeybox Registration'
+  end
+
+  def thank_you_gift
+    @title = 'Thank You For Choosing Bogeybox'
+  end
+
   def signup
     @title = 'Join The Club'
   end

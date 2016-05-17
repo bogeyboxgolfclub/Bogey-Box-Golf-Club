@@ -21,6 +21,6 @@
   <%= render 'layouts/header_visitor' %>
   <%= yield %>
 <% end %>
-  <%= render 'layouts/footer' unless current_page?(sign_up_url)%>
+  <%= render 'layouts/footer' unless current_page?(sign_up_url) || current_page?(gift_a_box_url)%>
 </body>
 </html>
