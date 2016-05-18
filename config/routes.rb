@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   post 'gift_submission',     to: 'gifters#gifting_submission'
   post 'typeform_submission', to: 'preferences#preference_submission'
 
-  resources  :users, :only => [:show]
   devise_for :users, :controllers => {:registrations => "registrations"}
-
+  resources  :users
 end
