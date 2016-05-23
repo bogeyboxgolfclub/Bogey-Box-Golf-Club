@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'success',              to: 'pages#success'
   post 'gift_submission',     to: 'gifters#gifting_submission'
   post 'typeform_submission', to: 'preferences#preference_submission'
+                                   
 
   devise_for :users, :controllers => {:registrations => "registrations"}
   resources  :users

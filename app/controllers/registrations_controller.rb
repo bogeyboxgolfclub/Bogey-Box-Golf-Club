@@ -17,7 +17,6 @@ class RegistrationsController < Devise::RegistrationsController
         sign_up(resource_name, resource)
         User.create_customer_in_stripe(params)
         respond_with resource, location: after_sign_up_path_for(resource)
-        User.send_initial_text_message(resource)
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
         expire_data_after_sign_in!

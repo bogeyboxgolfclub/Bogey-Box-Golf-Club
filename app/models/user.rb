@@ -49,12 +49,4 @@ class User < ActiveRecord::Base
            stripe_shipping_address_country_code: params[:stripeShippingAddressCountryCode])
   end
 
-  def self.send_initial_text_message(resource)
-    user = resource
-    @client = Twilio::REST::Client.new
-    @client.messages.create(from:      ENV['twilio_number'],
-                            to:        "+1#{user.phone}",
-                            body:      "#{user.first_name}, this is Nik, your Bogeybox Golf Pro. I wanted to welcome you to the club; I'm excited to get started on your preview box.")
-  end
-
 end
