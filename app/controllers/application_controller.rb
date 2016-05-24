@@ -2,6 +2,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
+  unless Rails.application.config.consider_all_requests_local
+    rescue_from ActiveRecord::RecordNotFound, ActionController::RoutingError, ActionController::MethodNotAllowed, ActionController::ExceptionCaught do |exception|
+      redirect_to :root
+    end
+  end
+
   protected
 
   def configure_permitted_parameters
@@ -16,6 +22,14 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     user_path(current_user)
+  end
+
+  def authenticate_user!
+    if user_signed_in?
+      super
+    else
+      redirect_to new_user_session_path, :notice => 'Please Sign In'
+    end
   end
 
 end

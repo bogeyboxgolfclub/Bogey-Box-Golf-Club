@@ -1,26 +1,29 @@
-<h2>Log in</h2>
 
+<div class="w-section content-section gray">
+  <div class="content-wrapper white contact">
+    <div class="contact-form-box">
+      <div class="contact-form-title-box">
+        <div class="title medium dark">Log In To Your Bogeybox Account:</div>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<br>
+<%= devise_error_messages! %>
+  <% flash.each do |key, value| %>
+     <div class="flash" style="color:black;" <%= key %>"><%= value %></div>
+  <% end %><br>
+  <div class="w-clearfix input-box">
+    <div class="input-text your-message">Email: <%= f.email_field :email, autofocus: true %></div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+<br>
+  <div class="w-clearfix input-box">
+    <div class="input-text your-message">Password: <%= f.password_field :password, autofocus: true %></div>
   </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
-
+  <br>
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in", :class => 'class="w-button submit-button' %>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+</div>

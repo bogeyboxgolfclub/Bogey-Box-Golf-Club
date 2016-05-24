@@ -7,7 +7,7 @@ class PagesController < ApplicationController
   def boxes
     @title = 'Boxes'
   end
-
+  
   def faq
     @title = 'Frequently Asked Questions'
   end
