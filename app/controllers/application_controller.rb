@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   unless Rails.application.config.consider_all_requests_local
-    rescue_from ActiveRecord::RecordNotFound, ActionController::RoutingError, ActionController::MethodNotAllowed, ActionController::ExceptionCaught do |exception|
+    rescue_from ActiveRecord::RecordNotFound, ActionController::RoutingError, ActionController::MethodNotAlloweddo |exception|
       redirect_to :root
     end
   end
