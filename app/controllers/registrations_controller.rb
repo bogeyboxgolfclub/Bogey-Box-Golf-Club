@@ -1,4 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
+
   def new
     @title = 'Join The Club'
     build_resource({})
