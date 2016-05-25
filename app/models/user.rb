@@ -28,7 +28,8 @@ class User < ActiveRecord::Base
               :customer =>    customer.id,
               :amount =>      100,
               :description => 'Bogeybox Golf Club Memebership Dues',
-              :currency =>    'usd')
+              :currency =>    'usd',
+              :receipt_email => params[:stripeEmail])
     update_user_shipping_and_billing_details(params)
   end
 
