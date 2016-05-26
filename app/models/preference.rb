@@ -1,8 +1,7 @@
 class Preference < ActiveRecord::Base
   belongs_to :user
   belongs_to :gift_recipient
-  validates  :email, uniqueness: true
-  validates  :user_id, uniqueness: true
+  
 
   def self.filter_preferences(params)
     answers = HTTParty.get("https://api.typeform.com/v0/form/Ugamap?key=#{ENV['typeform_key']}&token=#{params['form_response']['token']}").parsed_response['responses'][0]['answers']
