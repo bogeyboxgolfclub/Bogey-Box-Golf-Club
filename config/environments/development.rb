@@ -21,5 +21,5 @@ Rails.application.configure do
     password: ENV['gmail_password']
   }
   ActionMailer::Base.default :from => "Bogeybox Golf Club #{ENV['email']}"
-  #GoogleTagManager.gtm_id = ""
+  GoogleTagManager.gtm_id = ENV['gtm_id']
 end
