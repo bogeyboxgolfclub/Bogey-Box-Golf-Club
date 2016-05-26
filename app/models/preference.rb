@@ -1,7 +1,7 @@
 class Preference < ActiveRecord::Base
   belongs_to :user
   belongs_to :gift_recipient
-  
+
 
   def self.filter_preferences(params)
     answers = HTTParty.get("https://api.typeform.com/v0/form/Ugamap?key=#{ENV['typeform_key']}&token=#{params['form_response']['token']}").parsed_response['responses'][0]['answers']
@@ -9,7 +9,7 @@ class Preference < ActiveRecord::Base
   end
 
   def self.create_preferences_for_user(answers)
-    Preference.find_or_create_by(
+    Preference.create(
       style_on_course:        answers['listimage_21263859_choice'],
       dress_for_work:         answers['listimage_21263860_choice'],
       shirt_fit:              answers['listimage_21263861_choice'],
