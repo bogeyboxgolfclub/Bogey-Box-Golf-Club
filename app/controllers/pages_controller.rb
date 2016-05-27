@@ -7,7 +7,7 @@ class PagesController < ApplicationController
   def boxes
     @title = 'Boxes'
   end
-  
+
   def faq
     @title = 'Frequently Asked Questions'
   end
@@ -18,6 +18,10 @@ class PagesController < ApplicationController
 
   def giftbox
     @title = 'Gift Bogeybox Registration'
+  end
+
+  def gift_checkout
+    @title = 'Gift Box Checkout'
   end
 
   def thank_you_gift
