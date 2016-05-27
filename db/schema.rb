@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516232942) do
+ActiveRecord::Schema.define(version: 20160527165023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "discounts", force: :cascade do |t|
+    t.string   "code"
+    t.string   "amount"
+    t.string   "campaign"
+    t.datetime "expiration_date"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "gift_recipients", force: :cascade do |t|
     t.string   "first_name"
@@ -90,6 +99,7 @@ ActiveRecord::Schema.define(version: 20160516232942) do
     t.string   "stripe_shipping_address_city"
     t.string   "stripe_shipping_address_country"
     t.string   "stripe_shipping_address_country_code"
+    t.string   "amount_paid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

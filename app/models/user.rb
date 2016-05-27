@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   def self.charge_customer_on_stripe(customer, params)
     charge = Stripe::Charge.create(
               :customer =>    customer.id,
-              :amount =>      10000,
+              :amount =>      params['user']['amount_paid'],
               :description => 'Bogeybox Golf Club Memebership Dues',
               :currency =>    'usd',
               :receipt_email => params[:stripeEmail])

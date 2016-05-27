@@ -6,13 +6,16 @@
           </div>
             <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:name => "email-form", :class => "form", :id => "email-form"}) do |f| %>
               <%= devise_error_messages! %>
+                <% amount = Discount.return_discount_code_amount(params['discount_code']) %>
                 <% encryption = User.generate_encrypted_password(6) %>
                 <%= f.hidden_field :email, :value => params['email'] %>
                 <%= f.hidden_field :first_name, :value => params['first_name'] %>
                 <%= f.hidden_field :last_name, :value => params['last_name'] %>
                 <%= f.hidden_field :zip_code, :value => params['zip_code'] %>
                 <%= f.hidden_field :phone, :value => params['phone'] %>
+                <%= f.hidden_field :phone, :value => params['phone'] %>
                 <%= f.hidden_field :password, autocomplete: "off", :value => encryption %>
+                <%= f.hidden_field :amount_paid, :value => amount %>
                 <%= f.hidden_field :password_confirmation, autocomplete: "off", :value => encryption %>
 
               <script src="<%= ENV['stripe_checkout_url'] %>" class="stripe-button"
@@ -21,7 +24,7 @@
                       data-email="<%= params['email'] %>"
                       data-shipping-address=true
                       data-billing-address=true
-                      data-amount="10000"
+                      data-amount=<%= amount  %>
                       data-locale="auto"
                       data-allowRememberMe=false
                       data-image="<%= image_path('bb-webclip.jpg') %>"
