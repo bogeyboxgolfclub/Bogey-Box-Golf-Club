@@ -4,7 +4,7 @@ class Discount < ActiveRecord::Base
   def self.return_discount_code_amount(code)
     discount_code = Discount.find_by(code: code)
     if code.blank? or discount_code.blank?
-      return "10000"
+      return "2000"
     else
       discount_code.amount
     end
