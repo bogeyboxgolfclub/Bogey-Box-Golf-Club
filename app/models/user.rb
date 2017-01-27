@@ -13,7 +13,11 @@ class User < ActiveRecord::Base
   end
 
   def map_preference_to_user
-    Preference.where(email: self.email).first.update_attributes(user_id: self.id)
+		if Preference.exists?(email: self.email)
+    	Preference.where(email: self.email).first.update_attributes(user_id: self.id)
+		else
+			puts "Couldn't find preference for #{self.email}"
+		end
   end
 
   def self.create_customer_in_stripe(params)
