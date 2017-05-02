@@ -20,7 +20,6 @@
   <%= render 'layouts/header_user' %>
   <%= yield %>
 <% else %>
-  <%= render 'layouts/header_visitor' %>
   <%= yield %>
 <% end %>
   <%= render 'layouts/footer' unless current_page?(sign_up_url) || current_page?(gift_a_box_url) || current_page?(gift_checkout_url)%>
