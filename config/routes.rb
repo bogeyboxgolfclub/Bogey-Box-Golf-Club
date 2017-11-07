@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'pages#home'
+  root :to => redirect("http://www.bogeyboxgolfclub.com/")
 
   get 'boxes',                to: 'pages#boxes'
   get 'contact',              to: 'pages#contact'
