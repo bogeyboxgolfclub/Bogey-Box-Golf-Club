@@ -30,6 +30,16 @@
                       data-image="<%= image_path('bb-webclip.jpg') %>"
                       style="margin-bottom:10%;">Join The Club
               </script>
+              <script>
+                document.getElementById("stripe-button").addEventListener("click", function() {
+                  handler.open({
+                    image:"<%= image_path('bb-webclip.jpg') %>",
+                    name: "Bogeybox Golf Club",
+                    description: "$20 Style Deposit",
+                    amount: "<%= amount %>"
+                  });
+                });
+              </script>
               <% end %>
           </div>
         </div>
