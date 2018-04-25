@@ -30,16 +30,6 @@
                       data-image="<%= image_path('bb-webclip.jpg') %>"
                       style="margin-bottom:10%;">Join The Club
               </script>
-              <script>
-                document.getElementById("stripe-button").addEventListener("click", function() {
-                  handler.open({
-                    image:"<%= image_path('bb-webclip.jpg') %>",
-                    name: "Bogeybox Golf Club",
-                    description: "$20 Style Deposit",
-                    amount: "<%= amount %>"
-                  });
-                });
-              </script>
               <% end %>
           </div>
         </div>
@@ -49,6 +39,20 @@
 
 <script>
 $(document).ready(function () {
+  // document needs to be ready before adding en event listener
+  document.getElementById("stripe-button").addEventListener("click", function() {
+              handler.open({
+                image:"<%= image_path('bb-webclip.jpg') %>",
+                name: "Bogeybox Golf Club",
+                description: "$20 Style Deposit",
+                amount: "<%= amount %>"
+              });
+            });
+  // I think this might trigger the warning on mobile browsers - they don't like you
+  // doing stuff on behalf of the user.
+  // 
+  // Ideallly you should use Stipe.js and Elements instead of checkout - no more iframe popup
+  // https://stripe.com/elements
    $(".stripe-button-el").trigger('click');
 });
 </script>
